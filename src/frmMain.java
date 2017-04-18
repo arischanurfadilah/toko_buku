@@ -34,12 +34,14 @@ public class frmMain extends javax.swing.JFrame {
     /**
      * Creates new form frmMain
      */
-    public frmMain() {
+    public frmMain(String user) {
         initComponents();
         setTanggal();
         setJam();
+        LKasir.setText("Kasir : "+user);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,8 +56,8 @@ public class frmMain extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        LKasir = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         tfkode = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         tfnama = new javax.swing.JTextField();
@@ -63,6 +65,7 @@ public class frmMain extends javax.swing.JFrame {
         tfjumlah = new javax.swing.JTextField();
         tfharga = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -82,6 +85,10 @@ public class frmMain extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         waktu = new javax.swing.JLabel();
         tanggal = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        tfcari = new javax.swing.JTextField();
+        cari = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,16 +121,16 @@ public class frmMain extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(10, 40, 180, 30);
 
+        LKasir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LKasir.setText("jLabel9");
+        jPanel1.add(LKasir);
+        LKasir.setBounds(620, 10, 140, 40);
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 10, 770, 80);
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setLayout(null);
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Kode Barang");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(10, 10, 100, 30);
         jPanel2.add(tfkode);
         tfkode.setBounds(120, 10, 160, 30);
 
@@ -148,8 +155,13 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.add(jLabel7);
         jLabel7.setBounds(10, 130, 100, 30);
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("Kode Barang");
+        jPanel2.add(jLabel9);
+        jLabel9.setBounds(10, 10, 100, 30);
+
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(10, 150, 290, 170);
+        jPanel2.setBounds(10, 150, 290, 190);
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
         jPanel3.setLayout(null);
@@ -235,10 +247,10 @@ public class frmMain extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tbldata);
 
         jPanel5.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 10, 460, 140);
+        jScrollPane2.setBounds(10, 10, 460, 160);
 
         getContentPane().add(jPanel5);
-        jPanel5.setBounds(310, 160, 480, 160);
+        jPanel5.setBounds(310, 160, 480, 180);
 
         jPanel7.setBackground(new java.awt.Color(255, 204, 204));
         jPanel7.setLayout(null);
@@ -255,14 +267,14 @@ public class frmMain extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Diskon");
         jPanel7.add(jLabel8);
-        jLabel8.setBounds(10, 70, 100, 30);
+        jLabel8.setBounds(10, 60, 100, 30);
 
         tfdiskon.setEditable(false);
         jPanel7.add(tfdiskon);
-        tfdiskon.setBounds(10, 100, 140, 30);
+        tfdiskon.setBounds(10, 90, 140, 30);
 
         getContentPane().add(jPanel7);
-        jPanel7.setBounds(800, 100, 160, 220);
+        jPanel7.setBounds(800, 100, 160, 130);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 153));
         jPanel6.setLayout(null);
@@ -280,7 +292,30 @@ public class frmMain extends javax.swing.JFrame {
         getContentPane().add(jPanel6);
         jPanel6.setBounds(800, 10, 160, 80);
 
-        setSize(new java.awt.Dimension(977, 373));
+        jPanel8.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel8.setLayout(null);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Cari Kode Barang");
+        jPanel8.add(jLabel4);
+        jLabel4.setBounds(0, 0, 160, 30);
+        jPanel8.add(tfcari);
+        tfcari.setBounds(9, 27, 140, 30);
+
+        cari.setText("Cari");
+        cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cariActionPerformed(evt);
+            }
+        });
+        jPanel8.add(cari);
+        cari.setBounds(50, 70, 73, 23);
+
+        getContentPane().add(jPanel8);
+        jPanel8.setBounds(800, 240, 160, 100);
+
+        setSize(new java.awt.Dimension(977, 389));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -369,7 +404,32 @@ public class frmMain extends javax.swing.JFrame {
             System.err.format("Cannot print %s%n", e.getMessage());
         }
     }//GEN-LAST:event_print1ActionPerformed
+
+    private void cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariActionPerformed
+        cariData();
+    }//GEN-LAST:event_cariActionPerformed
    
+    private void cariData(){
+        String kolom[] = {"KodeBarang","NamaBarang","JumlahBarang","HargaBarang","TotalHarga"};
+         DefaultTableModel dtm = new DefaultTableModel(null, kolom);
+         String SQL = "SELECT * FROM tb_produk WHERE kode_barang='"+tfcari.getText()+"'";
+         ResultSet rs = KoneksiDB.executeQuery(SQL);
+         try{
+             while(rs.next()){
+                 String KodeBarang = rs.getString(1);
+                 String NamaBarang = rs.getString(2);
+                 String JumlahBarang = rs.getString(3);
+                 String HargaBarang = rs.getString(4);
+                 String TotalHarga = rs.getString(5);
+                 String data[] = {KodeBarang,NamaBarang,JumlahBarang,HargaBarang,TotalHarga};
+                 dtm.addRow(data);
+         }
+     } catch (SQLException ex){
+         Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
+     }
+         tbldata.setModel(dtm);
+    }
+    
     private void selectData() {
          String kolom[] = {"KodeBarang","NamaBarang","JumlahBarang","HargaBarang","TotalHarga"};
          DefaultTableModel dtm = new DefaultTableModel(null, kolom);
@@ -450,15 +510,13 @@ public class frmMain extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmMain().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LKasir;
     private javax.swing.JButton add;
+    private javax.swing.JButton cari;
     private javax.swing.JButton count;
     private javax.swing.JButton delete1;
     private javax.swing.JLabel jLabel1;
@@ -470,6 +528,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -477,6 +536,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -484,6 +544,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton refresh1;
     private javax.swing.JLabel tanggal;
     private javax.swing.JTable tbldata;
+    private javax.swing.JTextField tfcari;
     private javax.swing.JTextField tfdiskon;
     private javax.swing.JTextField tfharga;
     private javax.swing.JTextField tfjumlah;

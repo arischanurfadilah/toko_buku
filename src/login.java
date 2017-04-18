@@ -110,8 +110,9 @@ public class login extends javax.swing.JFrame {
              ps.setString(2, tfpass.getText());
              ResultSet result = ps.executeQuery();
              if (result.next()) {
-                 new frmMain().show();
-                 this.dispose();
+                String user = tfuser.getText();
+                new frmMain(user).setVisible(true);
+                this.dispose();
              }
              else{
                  JOptionPane.showMessageDialog(rootPane,"salah!");
@@ -122,6 +123,7 @@ public class login extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(rootPane, "gagal");
              
          }
+        
     }//GEN-LAST:event_signinActionPerformed
 
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed

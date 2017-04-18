@@ -46,7 +46,7 @@ public class KoneksiDB {
         } 
         return status; 
     } 
-     
+    
     public static ResultSet executeQuery(String SQL) { 
         ResultSet rs = null; 
         Connection koneksi = setKoneksi(); 
