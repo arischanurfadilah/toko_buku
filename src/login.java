@@ -129,6 +129,7 @@ public class login extends javax.swing.JFrame {
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
         String username = tfuser.getText();
         String password = tfpass.getText();
+        
         try{
              try(Statement statement = (Statement) file_koneksi.GetConnection().createStatement()){
                  statement.executeUpdate("insert into tb_akun(username,password) VALUES('"+username+"','"+password+"');");
